@@ -75,27 +75,27 @@ namespace KMA.Lab01Kucherenko.ViewModels
 
         private void DateChanged()
         {
-            Age = CalculateAge(DateOfBirth);
-            if (IsBirthday(DateOfBirth))
+            Age = CalculateAge();
+            if (IsBirthday())
                 MessageBox.Show("Happy birthday!");
         }
 
         #region AgeValidationMethods
 
-        private int CalculateAge(DateTime dob)
+        private int CalculateAge()
         {
-            var age = DateTime.Now.Year - dob.Year;
-            if (DateTime.Now.Month < dob.Month ||
-                (DateTime.Now.Month == dob.Month && DateTime.Now.Day < dob.Day))
+            var age = DateTime.Now.Year - DateOfBirth.Year;
+            if (DateTime.Now.Month < DateOfBirth.Month ||
+                (DateTime.Now.Month == DateOfBirth.Month && DateTime.Now.Day < DateOfBirth.Day))
                 age--;
             return age;
         }
 
-        private bool IsBirthday(DateTime dob)
+        private bool IsBirthday()
         {
-            if (!ValidAge(CalculateAge(dob)))
+            if (!ValidAge(CalculateAge()))
                 MessageBox.Show("Invalid date of birth");
-            return (DateTime.Now.Day == dob.Day) && (DateTime.Now.Month == DateOfBirth.Month);
+            return (DateTime.Now.Day == DateOfBirth.Day) && (DateTime.Now.Month == DateOfBirth.Month);
         }
 
         private bool ValidAge(int age)
