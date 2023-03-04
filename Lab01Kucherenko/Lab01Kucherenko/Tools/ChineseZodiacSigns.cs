@@ -1,7 +1,11 @@
 ﻿namespace KMA.Lab01Kucherenko.Tools
 {
-    public enum ChineseZodiacSigns
+    internal enum ChineseZodiacSigns
     {
+        Monkey,
+        Rooster,
+        Dog,
+        Pig,
         Rat,
         Ox,
         Tiger,
@@ -9,10 +13,6 @@
         Dragon,
         Snake,
         Horse,
-        Goat,
-        Monkey,
-        Rooster,
-        Dog,
-        Pig
+        Goat
     }
 }

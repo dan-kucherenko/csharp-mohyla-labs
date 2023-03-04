@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace KMA.Lab01Kucherenko.Tools
 {
-    class RelayCommand<T> : ICommand
+    internal class RelayCommand<T> : ICommand
     {
         #region Fields
         readonly Action<T> _execute;

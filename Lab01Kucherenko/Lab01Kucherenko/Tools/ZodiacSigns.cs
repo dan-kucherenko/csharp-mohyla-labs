@@ -1,6 +1,6 @@
 ﻿namespace KMA.Lab01Kucherenko.Tools
 {
-    public enum ZodiacSigns
+    internal enum ZodiacSigns
     {
         Aries,
         Taurus,
