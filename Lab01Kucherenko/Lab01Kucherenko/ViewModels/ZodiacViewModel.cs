@@ -69,7 +69,8 @@ namespace KMA.Lab01Kucherenko.ViewModels
 
         private void GetSigns()
         {
-           throw new NotImplementedException();
+            Zodiac = GetZodiacSign();
+            ChineseZodiac = GetChineseZodiacSigns();
         }
 
         private void DateChanged()
@@ -92,14 +93,32 @@ namespace KMA.Lab01Kucherenko.ViewModels
 
         private bool IsBirthday(DateTime dob)
         {
-            if (!IsValidAge(CalculateAge(dob)))
+            if (!ValidAge(CalculateAge(dob)))
                 MessageBox.Show("Invalid date of birth");
-            return DateTime.Now.DayOfYear == dob.DayOfYear;
+            return (DateTime.Now.Day == dob.Day) && (DateTime.Now.Month == DateOfBirth.Month);
         }
 
-        private bool IsValidAge(int age)
+        private bool ValidAge(int age)
         {
             return age is >= 0 and < 135;
+        }
+
+        #endregion
+
+        #region CalculateZodiacSign
+
+        private ZodiacSigns GetZodiacSign()
+        {
+            const int astrologicalStartMonth = 3;
+            int notMarchMonths = DateOfBirth.DayOfYear / 31 - astrologicalStartMonth;
+            if (notMarchMonths < 0)
+                notMarchMonths += 12;
+            return (ZodiacSigns)notMarchMonths;
+        }
+
+        private ChineseZodiacSigns GetChineseZodiacSigns()
+        {
+            return (ChineseZodiacSigns)(DateOfBirth.Year % 12);
         }
 
         #endregion
